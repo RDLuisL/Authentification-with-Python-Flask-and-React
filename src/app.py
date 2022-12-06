@@ -7,16 +7,18 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, User
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
-
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+import datetime
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+jwt = JWTManager(app)
 app.url_map.strict_slashes = False
 
 # database condiguration
@@ -62,6 +64,53 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0 # avoid cache memory
     return response
+
+
+
+# Route de CODE solicitadas
+
+@app.route ('/signup', methods = ['POST']) # creacion de usuario por post
+def new_user():
+    body = request.get_json()
+    existe = User.query.filter_by(email = body['email']).first()
+    if (existe is  not None):
+        return "Usuario Existe, intente nuevamente"
+    else :    
+        new_user = User()
+        new_user.email = body['email']
+        new_user.password = body['password']
+        new_user.is_active = True
+
+        db.session.add(new_user)
+        db.session.commit()
+        return "usuario creado!" 
+
+
+@app.route('/login', methods=['POST']) # para cuando el usuario ingresa
+def login():
+    body = request.get_json()
+    one = User.query.filter_by(email=body['email'], password=body['password']).first()
+    if (one is None):
+        return "El usuario no existe o su clave es incorrecta"
+    else:
+        expiracion = datetime.timedelta(seconds=6000000)
+        acceso = create_access_token(identity=body['email'] , expires_delta=expiracion)
+        return{
+            "Login": "ok",
+            "token": acceso,
+            "tiempo": expiracion.total_seconds()
+        }
+
+@app.route ('/private', methods = ['GET'])
+@jwt_required()
+def private ():
+    identidad = get_jwt_identity()
+    usuario = User.query.filter_by(email = identidad).first()
+    if (usuario):
+        print("usuario encontrado")
+        return jsonify({"success": "ok", "usuario": identidad})
+    else:
+        return jsonify({"success": "not", "message": "usuario no existe"})
 
 
 # this only runs if `$ python src/main.py` is executed

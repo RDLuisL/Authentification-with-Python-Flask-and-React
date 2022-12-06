@@ -5,3 +5,128 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  background: black;
+  background: rgba(48, 3, 35, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(48, 3, 35, 1) 0%,
+    rgba(48, 3, 35, 1) 41%,
+    rgba(145, 32, 107, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(48, 3, 35, 1)),
+    color-stop(41%, rgba(48, 3, 35, 1)),
+    color-stop(100%, rgba(145, 32, 107, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(48, 3, 35, 1) 0%,
+    rgba(48, 3, 35, 1) 41%,
+    rgba(145, 32, 107, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(48, 3, 35, 1) 0%,
+    rgba(48, 3, 35, 1) 41%,
+    rgba(145, 32, 107, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(48, 3, 35, 1) 0%,
+    rgba(48, 3, 35, 1) 41%,
+    rgba(145, 32, 107, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(48, 3, 35, 1) 0%,
+    rgba(48, 3, 35, 1) 41%,
+    rgba(145, 32, 107, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#300323', endColorstr='#91206b', GradientType=1 );
+}
+
+.form-label {
+  color: white;
+}
+
+.nav {
+  background-color: #000000;
+  color: white;
+}
+
+.nav-title {
+  text-decoration: none;
+}
+
+.row {
+}
+
+.bg1 {
+  -webkit-box-shadow: 26px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 26px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 26px 20px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.bg2 {
+  -webkit-box-shadow: 0px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  height: 100%;
+}
+.container {
+  /* -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
+}
+.r1 {
+  border-radius: 25px 0px 0px 25px;
+  -moz-border-radius: 25px 0px 0px 25px;
+  -webkit-border-radius: 25px 0px 0px 25px;
+  border: 0px solid #000000;
+}
+.r2 {
+  border-radius: 0px 25px 25px 0px;
+  -moz-border-radius: 0px 25px 25px 0px;
+  -webkit-border-radius: 0px 25px 25px 0px;
+  border: 0px solid #000000;
+}
+
+/* --------- Marcelo  --------------------------- */
+.img_1 {
+  height: 7rem;
+}
+
+.img_2 {
+  height: 1rem;
+}
+
+.img_3 {
+  height: 1.5rem;
+}
+
+.form_1 {
+  background-color: white;
+  width: auto;
+}
+
+.div_remember {
+  font-size: 0.9rem;
+}
+
+.footer-title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  bottom: 0;
+}
