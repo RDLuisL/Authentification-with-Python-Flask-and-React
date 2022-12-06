@@ -125,7 +125,6 @@ body {
 .footer-title {
   height: 100%;
   width: 100%;
-  display: flex;
   justify-content: center;
   align-content: flex-end;
   bottom: 0;
